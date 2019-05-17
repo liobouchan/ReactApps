@@ -7,6 +7,7 @@ import { todos } from './todos.json';
 
 // subcomponents
 import TodoForm from './components/TodoForm';
+import Card from './components/Card'
 
 class App extends Component {
   constructor() {
@@ -15,9 +16,17 @@ class App extends Component {
       todos
     }
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
   }
 
   removeTodo(index) {
+    console.log("Entrando a Borrar");
+    console.log(index)
+    console.log(this);
+    console.log(this.state)
+    // this.setState({
+    //   todos: [...this.state.todos, this.props.todos]
+    // })
     this.setState({
       todos: this.state.todos.filter((e, i) => {
         return i !== index
@@ -26,36 +35,14 @@ class App extends Component {
   }
 
   handleAddTodo(todo) {
+    console.log(this)
     this.setState({
       todos: [...this.state.todos, todo]
     })
   }
 
   render() {
-    const todos = this.state.todos.map((todo, i) => {
-      return (
-        <div className="col-md-4" key={i}>
-          <div className="card mt-4">
-            <div className="card-title text-center">
-              <h3>{todo.title}</h3>
-              <span className="badge badge-pill badge-danger ml-2">
-                {todo.priority}
-              </span>
-            </div>
-            <div className="card-body">
-              {todo.description}
-            </div>
-            <div className="card-footer">
-              <button
-                className="btn btn-danger"
-                onClick={this.removeTodo.bind(this, i)}>
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )
-    });
+
 
     // RETURN THE COMPONENT
     return (
@@ -72,16 +59,14 @@ class App extends Component {
 
         <div className="container">
           <div className="row mt-4">
-
             <div className="col-md-4 text-center">
                 <img src={logo} className="App-logo" alt="logo" />
               <TodoForm onAddTodo={this.handleAddTodo}></TodoForm>
             </div>
-
             <div className="col-md-8">
-              <div className="row">
-                {todos}
-              </div>
+              {/* <div className="row"> */}
+                <Card todos={this.state.todos} remove={this.removeTodo}></Card>
+              {/* </div> */}
             </div>
           </div>
         </div>
