@@ -61,11 +61,14 @@ class App extends React.Component {
         <div style={ styles.swatch } onClick={ this.handleClick }>
           <div style={ styles.color } />
         </div>
-        { this.state.displayColorPicker ? <div style={ styles.popover }>
-          <div style={ styles.cover } onClick={ this.handleClose }/>
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
-        </div> : null }
+        { this.state.displayColorPicker ? 
+          <div style={ styles.popover }>
+            <div style={ styles.cover } onClick={ this.handleClose }/>
+            <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+          </div> 
+          : null }
         <p>----------------------------------------------------------</p>
+        <p>Color Seleccionado: {this.state.color}</p>
       </div>
     )
   }
