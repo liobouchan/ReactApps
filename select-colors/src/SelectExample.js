@@ -24,5 +24,6 @@ export default () => (
     options={colourOptions}
     className="basic-multi-select"
     classNamePrefix="select"
+    placeholder="Selecciona uno perro"
   />
 );
