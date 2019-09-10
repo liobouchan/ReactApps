@@ -60,71 +60,71 @@ class App extends React.Component {
   const datos = {
       "nodes": [
         {
-          "label": "Artículo 325 Bis 2",
+          "name": "Artículo 325 Bis 2",
           "id": 3493
         },
         {
-          "label": "Artículo 325 Bis",
+          "name": "Artículo 325 Bis",
           "id": 3274
         },
         {
-          "label": "Artículo 325 Bis 1",
+          "name": "Artículo 325 Bis 1",
           "id": 3492
         },
         {
-          "label": "Artículo 122 Bis",
+          "name": "Artículo 122 Bis",
           "id": 3491
         },
         {
-          "label": "Artículo 324",
+          "name": "Artículo 324",
           "id": 3247
         },
         {
-          "label": "Artículo 64 Bis",
+          "name": "Artículo 64 Bis",
           "id": 3490
         },
         {
-          "label": "Artículo 279",
+          "name": "Artículo 279",
           "id": 2904
         },
         {
-          "label": "Artículo 279",
+          "name": "Artículo 279",
           "id": 2902
         },
         {
-          "label": "Artículo 55 Bis",
+          "name": "Artículo 55 Bis",
           "id": 3489
         },
         {
-          "label": "Artículo 275 Bis",
+          "name": "Artículo 275 Bis",
           "id": 2896
         },
         {
-          "label": "Artículo 275 Bis",
+          "name": "Artículo 275 Bis",
           "id": 2898
         },
         {
-          "label": "Artículo 250",
+          "name": "Artículo 250",
           "id": 3488
         },
         {
-          "label": "Artículo 249",
+          "name": "Artículo 249",
           "id": 2773
         },
         {
-          "label": "Artículo 400 Bis",
+          "name": "Artículo 400 Bis",
           "id": 3471
         },
         {
-          "label": "Artículo 154",
+          "name": "Artículo 154",
           "id": 2242
         },
         {
-          "label": "Artículo 127",
+          "name": "Artículo 127",
           "id": 3470
         },
         {
-          "label": "Artículo 126",
+          "name": "Artículo 126",
           "id": 2168
         }
       ],
@@ -204,40 +204,64 @@ class App extends React.Component {
   }
 
   const layout= {
-    name: 'random'
+    name: 'cose',//concentric
+    animate: 'end',
+    animationEasing: 'ease-in-out',
   }
 
+  const style = {
+    width: '1280px', 
+    height: '720px' 
+  }
 
-  
-    return <CytoscapeComponent 
-    cy={(cy) => { this.cy = cy }}
-    elements={CytoscapeComponent.normalizeElements(newData)} 
-    style={ 
-      {
-      width: '1280px', 
-      height: '720px' 
-      }
-    } 
-    layout={layout}
-    stylesheet={[
+  const stylesheet = [
     {
       selector: 'node',
       style: {
-        'background-color' : 'green',
-        'label': 'data(label)'
+        'background-color' : '#00ACAB',
+        'label': 'data(name)',
+        'font-size' : '8',
+        'font-weight': 'bold',
+        'border-width': '1',
+        'border-style' : 'dotted',
+        'border-color' : '#906DB1',
+        'text-valign': 'center',
+        'text-halign': 'center',
+        'overlay-padding': '6px',
+        'text-outline-width': 1.5,
+	      'text-outline-color': '#fff',
+	      'text-outline-opacity': 1,
       }
     },
     {
       selector: 'edge',
       style: {
-        width: 3,
-        //'label': 'data(label)',
+        'width': '2.5',
         'curve-style': 'bezier',
         'target-arrow-shape': 'triangle',
-        'target-arrow-color': 'black' 
+        'target-arrow-color': 'black',
+        'line-color' : '#a6a6a6',
+        'opacity': '0.5',
       }
     },
-  ]}
+    {
+      "selector": "node:selected",
+      "style": {
+        "border-width": "6px",
+        "border-color": "#00ACAB",
+        "border-opacity": "0.5",
+        "background-color": "#906DB1",
+      }
+    }
+  ]
+
+  
+    return <CytoscapeComponent 
+    cy={(cy) => { this.cy = cy }}
+    elements={CytoscapeComponent.normalizeElements(newData)} 
+    style={style} 
+    layout={layout}
+    stylesheet={stylesheet}
     />;
   }
 }
