@@ -9,14 +9,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.cy.on('click' , 'node' , (evt) =>{
-      console.log("EVENTO : " , evt);
-      console.log("EVENTO TARGET: " , evt.target);
-      console.log("EVENTO TARGET . DATA: " , evt.target._private.data);
-      var node = evt.target
-      console.log("buscando el nodo" , node.data());
-      console.log('tapped ' + node.id());
-    });
+    // this.cy.on('click' , 'node' , (evt) =>{
+    //   console.log("EVENTO : " , evt);
+    //   console.log("EVENTO TARGET: " , evt.target);
+    //   console.log("EVENTO TARGET . DATA: " , evt.target._private.data);
+    //   var node = evt.target
+    //   console.log("buscando el nodo" , node.data());
+    //   console.log('tapped ' + node.id());
+    // });
+
   }
 
   render(){
@@ -43,16 +44,16 @@ class App extends React.Component {
       ],
       "edges": [
         
-          { data: { id:100 , source: 'one', target: 'two', label: 'Edge from Node1 to Node2' }},
-          { data: {  id:101 ,source: 'one', target: 'two', label: 'Edge from Node1 to Node2' }},
-          { data: {  id:102 ,source: 'two', target: '3', label: 'Edge' }},
-          { data: {  id:103,source: 'two', target: '4', label: 'Edge' }},
-          { data: {  id:104 ,source: '3', target: '4', label: 'Edge from Node1' }},
-          { data: {  id:105 ,source: '3', target: '4', label: 'Edge from Node' }},
-          { data: {  id:106 ,source: '3', target: '4', label: 'Edge from Nod' }},
-          { data: {  id:107 ,source: '3', target: '4', label: 'Edge from No' }},
-          { data: {  id:108 ,source: '4', target: '3', label: 'Edge2' }},
-          { data: {  id:109 ,source: '4', target: '3', label: 'Edge 1e' }}
+          { data: {   source: 'one', target: 'two', label: 'Edge from Node1 to Node2' }},
+          { data: {   source: 'one', target: 'two', label: 'Edge from Node1 to Node2' }},
+          { data: {   source: 'two', target: '3', label: 'Edge' }},
+          { data: {  source: 'two', target: '4', label: 'Edge' }},
+          { data: {   source: '3', target: '4', label: 'Edge from Node1' }},
+          { data: {   source: '3', target: '4', label: 'Edge from Node' }},
+          { data: {   source: '3', target: '4', label: 'Edge from Nod' }},
+          { data: {   source: '3', target: '4', label: 'Edge from No' }},
+          { data: {   source: '4', target: '3', label: 'Edge2' }},
+          { data: {   source: '4', target: '3', label: 'Edge 1e' }}
         
     ]
   }
@@ -3323,9 +3324,11 @@ class App extends React.Component {
     }))
   }
 
+
+
   const layout= {
     name: 'cose',//concentric
-    animate: 'end',
+    //animate: 'end',
     animationEasing: 'ease-in-out',
   }
 
@@ -3362,7 +3365,7 @@ class App extends React.Component {
         'target-arrow-color': 'black',
         'line-color' : '#a6a6a6',
         'opacity': '0.5',
-        'label': 'data(type)',
+        //'label': 'data(type)',
       }
     },
     {
@@ -3376,14 +3379,25 @@ class App extends React.Component {
     }
   ]
 
-  
-    return <CytoscapeComponent 
-    cy={(cy) => { this.cy = cy }}
-    elements={CytoscapeComponent.normalizeElements(newData)} 
-    style={style} 
-    layout={layout}
-    stylesheet={stylesheet}
-    />;
+  if(this.cy){
+    this.cy.on('click' , 'node' , (evt) =>{
+      console.log("EVENTO : " , evt);
+      console.log("EVENTO TARGET: " , evt.target);
+      console.log("EVENTO TARGET . DATA: " , evt.target._private.data);
+      var node = evt.target
+      console.log("buscando el nodo" , node.data());
+      console.log('tapped ' + node.id());
+    });
+    }
+    return( 
+      <CytoscapeComponent 
+        cy={(cy) => { this.cy = cy }}
+        elements={CytoscapeComponent.normalizeElements(elementos)} 
+        style={style} 
+        layout={layout}
+        stylesheet={stylesheet}
+      />
+    )
   }
 }
 
