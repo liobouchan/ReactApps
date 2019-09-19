@@ -11,7 +11,9 @@ class Form extends Component {
       formErrors: {email: '', password: ''},
       emailValid: false,
       passwordValid: false,
-      formValid: false
+      formValid: false,
+      hola: '',
+      hola2: ''
     }
   }
 
@@ -48,6 +50,7 @@ class Form extends Component {
 
   validateForm() {
     this.setState({formValid: this.state.emailValid && this.state.passwordValid});
+    console.log(this.state)
   }
 
   errorClass(error) {
@@ -73,6 +76,20 @@ class Form extends Component {
           <input type="password" className="form-control" name="password"
             placeholder="Password"
             value={this.state.password}
+            onChange={this.handleUserInput}  />
+        </div>
+        <div className={`form-group `}>
+          <label htmlFor="hola">Password</label>
+          <input type="text" className="form-control" name="hola"
+            placeholder="hola"
+            value={this.state.hola}
+            onChange={this.handleUserInput}  />
+        </div>
+        <div className={`form-group `}>
+          <label htmlFor="hola2">Password</label>
+          <input type="text" className="form-control" name="hola2"
+            placeholder="hola2"
+            value={this.state.hola2}
             onChange={this.handleUserInput}  />
         </div>
         <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Sign up</button>
