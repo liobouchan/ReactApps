@@ -3380,7 +3380,7 @@ class App extends React.Component {
     {
       selector: 'edge[type=\'UNO\']',
       "style": {
-        "line-color": "#9bd8de"
+        "line-color": "#1089ff"
       }
     }
   ]
