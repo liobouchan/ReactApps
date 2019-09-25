@@ -44,16 +44,16 @@ class App extends React.Component {
       ],
       "edges": [
         
-          { data: {   source: 'one', target: 'two', label: 'Edge from Node1 to Node2' }},
-          { data: {   source: 'one', target: 'two', label: 'Edge from Node1 to Node2' }},
-          { data: {   source: 'two', target: '3', label: 'Edge' }},
-          { data: {  source: 'two', target: '4', label: 'Edge' }},
-          { data: {   source: '3', target: '4', label: 'Edge from Node1' }},
-          { data: {   source: '3', target: '4', label: 'Edge from Node' }},
-          { data: {   source: '3', target: '4', label: 'Edge from Nod' }},
-          { data: {   source: '3', target: '4', label: 'Edge from No' }},
-          { data: {   source: '4', target: '3', label: 'Edge2' }},
-          { data: {   source: '4', target: '3', label: 'Edge 1e' }}
+          { data: {   source: 'one', target: 'two', label: 'Edge from Node1 to Node2', type: 'UNO' }},
+          { data: {   source: 'one', target: 'two', label: 'Edge from Node1 to Node2', type: 'UNO' }},
+          { data: {   source: 'two', target: '3', label: 'Edge', type: 'UNO' }},
+          { data: {  source: 'two', target: '4', label: 'Edge', type: 'UNO' }},
+          { data: {   source: '3', target: '4', label: 'Edge from Node1', type: 'UNO' }},
+          { data: {   source: '3', target: '4', label: 'Edge from Node', type: 'DOS' }},
+          { data: {   source: '3', target: '4', label: 'Edge from Nod', type: 'DOS' }},
+          { data: {   source: '3', target: '4', label: 'Edge from No', type: 'DOS' }},
+          { data: {   source: '4', target: '3', label: 'Edge2', type: 'DOS' }},
+          { data: {   source: '4', target: '3', label: 'Edge 1e', type: 'DOS' }}
         
     ]
   }
@@ -3369,12 +3369,18 @@ class App extends React.Component {
       }
     },
     {
-      "selector": "node:selected",
+      selector: 'node:selected',
       "style": {
         "border-width": "6px",
         "border-color": "#00ACAB",
         "border-opacity": "0.5",
         "background-color": "#906DB1",
+      }
+    },
+    {
+      selector: 'edge[type=\'UNO\']',
+      "style": {
+        "line-color": "#9bd8de"
       }
     }
   ]
