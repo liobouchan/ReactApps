@@ -32,3 +32,30 @@ console.log(hasTheWord)
 
 contentToDisplay = contentSplited[hasTheWord] + contentSplited[hasTheWord + 1]
 console.log(contentToDisplay)
+
+console.log("SI SI PAPA SI SI SI SIS ISSIIS SI SI SI SIS")
+
+descriptionGenerator = (articleContent) => {
+  contentSplited = articleContent.split(/(deberán)/ig)
+  generatedDescription = "" 
+  returnedIndex = ""
+  contentSplited.forEach( (sentence, index) => {
+    //console.log(parragraph)
+    if( sentence.includes("deberán") ){
+      //console.log(parragraph)
+      //console.log(index)
+      returnedIndex = index
+    }
+  })
+  console.log(returnedIndex);
+  if((returnedIndex+1) < contentSplited.length){
+    console.log("Si es mayor")
+    generatedDescription = contentSplited[returnedIndex] + contentSplited[returnedIndex+1]
+  }else{
+    console.log("No es mayor")
+    generatedDescription = contentSplited[returnedIndex-1] + contentSplited[returnedIndex]
+  }
+  return generatedDescription
+}
+
+console.log(descriptionGenerator(content2))
