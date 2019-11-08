@@ -41,10 +41,15 @@ descriptionGenerator = (articleContent) => {
   returnedIndex = ""
   contentSplited.forEach( (sentence, index) => {
     //console.log(parragraph)
-    if( sentence.includes("deberán") ){
-      //console.log(parragraph)
-      //console.log(index)
-      returnedIndex = index
+    if(returnedIndex == ""){
+      console.log("Entró a la validación de palabras");
+      if( sentence.includes("deberán") ){
+        console.log("Encontró Algo")
+        //console.log(index)
+        returnedIndex = index
+      }
+    }else{
+      console.log("Ya tiene un valor : " , returnedIndex);
     }
   })
   console.log(returnedIndex);
