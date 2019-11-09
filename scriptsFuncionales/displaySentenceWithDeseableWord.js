@@ -131,3 +131,56 @@ const descriptionGenerator3 = (articleContent) => {
   
   return generatedDescription
 }
+
+
+const descriptionGenerator3 = (articleContent) => {
+  let contentSplited = articleContent.match(/([a-zA-Z\u00C0-\u024F\u1E00-\u1EFF,\s\r\n\d]*)(deberán|deberá|podrá|podrán|será)([a-zA-Z\u00C0-\u024F\u1E00-\u1EFF,\s\r\n\d]+[.:]{0,1})/ig)
+  let generatedDescription = "" 
+  let returnedIndex = null
+  console.log("ESTO ES EL CONTENIDO SPLITEADO: " , contentSplited)
+  contentSplited.forEach( (sentence, index) => {
+    console.log("ESTO ES LA SENTENCIA ACTUAL: " , sentence)
+    console.log(returnedIndex)
+    console.log(returnedIndex == null)
+    if(returnedIndex == null){
+      //console.log("Entró a la validación de palabras");
+      // if( sentence.includes("deberán") || sentence.includes("deberá") || sentence.includes("podrÃ¡") || sentence.includes("podrÃ¡n") || sentence.includes("serÃ¡") ){
+      //   console.log("Encontró Algo")
+      //   console.log("Este es el index: " , index)
+        returnedIndex = index
+      // }
+    }else{
+      console.log("Ya tiene un valor : " , returnedIndex);
+    }
+  })
+  console.log(returnedIndex);
+  if((returnedIndex) <= contentSplited.length){
+    console.log("Si es mayor")
+    generatedDescription = contentSplited[returnedIndex];
+  }
+  console.log("Descripción Generada : " , generatedDescription);
+
+  console.log("   ")
+  console.log("   ")
+  console.log("   ")
+  
+  return generatedDescription
+}
+
+console.log(descriptionGenerator3(content))
+
+
+
+const content = "La institución de banca múltiple de que se trate, deberá verificar que las personas que sean designadas como consejeros, director general y funcionarios con las dos jerarquías inmediatas inferiores a la de este último, cumplan, con anterioridad al inicio de sus gestiones, con los requisitos señalados en los artículos 23 y 24 de esta Ley. La Comisión Nacional Bancaria y de Valores podrá establecer, mediante disposiciones de carácter general, los criterios mediante los cuales se deberán integrar los expedientes que acrediten el cumplimiento a lo señalado en el presente artículo. En todo caso, las personas mencionadas en el párrafo anterior deberán manifestar por escrito: I. Que no se ubican en ninguno de los supuestos a que se refieren las fracciones III a VIII del artículo 23, tratándose de consejeros y III del artículo 24 para el caso del director general y funcionarios a que se refiere el primer párrafo de este artículo; II. Que se encuentran al corriente de sus obligaciones crediticias de cualquier género, y III. Que conocen los derechos y obligaciones que asumen al aceptar el cargo que corresponda. Las instituciones de banca múltiple deberán informar a la Comisión Nacional Bancaria y de Valores los nombramientos de consejeros, director general y funcionarios con las dos jerarquías inmediatas inferiores a la de este último, dentro de los cinco días hábiles posteriores a su designación, manifestando expresamente que los mismos cumplen con los requisitos aplicables. Artículo adicionado DOF 04-06-2001"
+
+const obligationIdentifier = (articleContent) => {
+  const OBLIGATION_WORDS_IDENTIFIER = /([a-zA-Z\u00C0-\u024F\u1E00-\u1EFF,\s\r\n\d]*)(deberán|deberá|podrá|podrán|será)([a-zA-Z\u00C0-\u024F\u1E00-\u1EFF,\s\r\n\d]+[.:]{0,1})/ig
+  let obligationSentences = articleContent.match(OBLIGATION_WORDS_IDENTIFIER)
+  return obligationSentences
+}
+
+let obligations = obligationIdentifier(content)
+
+obligations.forEach( (obligation) => {
+  console.log(obligation)
+} )
