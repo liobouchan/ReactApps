@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import SortableTree from 'react-sortable-tree';
+import 'react-sortable-tree/style.css'; // This only needs to be imported once in your app
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App  extends Component{
+  constructor(props) {
+    super(props);
 
-export default App;
+    this.state = {
+      treeData: [
+        { title: 'Secretaría de Hacienda y Crédito Público', children: [{ title: 'CNVB', children:[{title: 'CUB'}, {title: 'Fintech '}] }] },
+        { title: 'Secretaría de Finanzas', children: [{ title: 'Proximamente'}] },
+        { title: 'Secretaría de Economía', children: [{ title: 'Proximamente'}] },
+        { title: 'BANXICO', children: [{ title: 'Circular 13/2017'} , { title: 'Circular 14/2017'}] }
+      ],
+    };
+  }
+
+  render() {
+    return (
+      <div style={{ height: 400 }}>
+        <SortableTree
+          treeData={this.state.treeData}
+          onChange={treeData => this.setState({ treeData })}
+          canDrag={false}
+        />
+      </div>
+    );
+  }
+}export default App;
