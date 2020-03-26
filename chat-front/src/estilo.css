@@ -7,13 +7,13 @@
   -ms-flex-direction: column;
   flex-direction: column;
   text-align: center;
-  padding: 15px 0 25px
+  padding: 15px 0 15px
 }
 
 .rcw-conversation-container .rcw-title {
-  font-size: 24px;
+  font-size: 14px;
   margin: 0;
-  padding: 15px 0
+  /* padding: 15px 0 */
 }
 
 .rcw-conversation-container .rcw-close-button {
@@ -103,7 +103,7 @@
 }
 
 .rcw-response {
-  background-color: #CCC3EA;
+  background-color: #f4f7f9;
 }
 
 .rcw-message-text p {
@@ -476,7 +476,7 @@
   -ms-flex-direction: column;
   flex-direction: column;
   margin: 0 20px 20px 0;
-  max-width: 370px;
+  max-width: 300px;
   position: fixed;
   right: 0;
   z-index: 1
