@@ -28,7 +28,7 @@ const App = () => {
       <Row>
         <Col md="4" lg="4">
           <DinamicPagination
-            totalPages={8}
+            totalPages={20}
             pageNeighbours={1}
             onPageChanged={onPageChanged}
             currentPage={currentPage}
