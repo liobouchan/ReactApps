@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import {Button} from 'primereact/button';
+import WithPrime from './Components/WithPrime'
+import WithReactstrap from './Components/WithReactstrap'
 
 const App = () => {
   return (
     <div>
-    <Button label="Probando"/>
-
+      <WithPrime/>
+      {/* <WithReactstrap/> */}
     </div>
   );
 }
